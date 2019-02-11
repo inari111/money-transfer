@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package money;
+option go_package = "pb";
+
+service MoneyCommand {
+    // UserIDを指定して金額を増やす
+    rpc Gain(MoneyGainRequest) returns (MoneyGainResponse);
+}
+
+message MoneyGainRequest {
+    // ユーザーID
+    string user_id = 1;
+
+    // 金額
+    uint64 amount = 2;
+}
+
+message MoneyGainResponse {
+}

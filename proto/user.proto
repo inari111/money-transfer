@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package user;
+option go_package = "pb";
+
+import "google/protobuf/timestamp.proto";
+
+message User {
+    string id = 1;
+
+    Profile user_profile = 2;
+
+    google.protobuf.Timestamp created_at = 100;
+    google.protobuf.Timestamp updated_at = 101;
+}
+
+message Profile {
+    string name = 1;
+
+    uint32 age = 2;
+}

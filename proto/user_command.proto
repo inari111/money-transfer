@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package user;
+option go_package = "pb";
+
+import "user.proto";
+
+service UserCommand {
+    // ユーザー登録
+    rpc Register(UserRegisterRequest) returns (UserRegisterResponse);
+
+    // プロフィール更新
+    rpc UpdateProfile(UserUpdateProfileRequest) returns (UserUpdateProfileResponse);
+}
+
+message UserRegisterRequest {}
+
+message UserRegisterResponse {
+    User user = 1;
+}
+
+message UserUpdateProfileRequest {
+    string name = 1;
+}
+
+message UserUpdateProfileResponse {
+    User user = 1;
+}

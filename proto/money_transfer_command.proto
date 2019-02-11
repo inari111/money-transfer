@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package money;
+option go_package = "pb";
+
+service MoneyTransferCommand {
+    // user_idとamountを指定して送金する
+    rpc Send(MoneyTransferSendRequest) returns (MoneyTransferSendResponse);
+}
+
+message MoneyTransferSendRequest {
+    // ユーザーID
+    string user_id = 1;
+
+    // 送金額
+    uint64 amount = 2;
+}
+
+message MoneyTransferSendResponse {
+}

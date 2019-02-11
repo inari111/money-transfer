@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package money;
+option go_package = "pb";
+
+import "money_balance.proto";
+
+service MoneyQuery {
+    // 残高を取得する
+    rpc GetBalance(MoneyGetBalanceRequest) returns (MoneyGetBalanceResponse);
+}
+
+message MoneyGetBalanceRequest {
+    string user_id = 1;
+}
+
+message MoneyGetBalanceResponse {
+    Balance balance = 1;
+}

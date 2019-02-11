@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package money;
+option go_package = "pb";
+
+message Balance {
+    string user_id = 1;
+
+    // マイナスにならないことを前提としている
+    uint64 amount = 2;
+}

@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package user;
+option go_package = "pb";
+
+import "user.proto";
+
+service UserQuery {
+    // ユーザーを取得する
+    rpc Get(UserGetRequest) returns (UserGetResponse);
+}
+
+message UserGetRequest {
+    string user_id = 1;
+}
+
+message UserGetResponse {
+    User user = 1;
+}
