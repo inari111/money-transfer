@@ -3,13 +3,15 @@ package api
 import (
 	"context"
 
+	"github.com/inari111/money-transfer-study/domain/user"
+
 	pb "github.com/inari111/money-transfer-study/proto"
 
-	"github.com/inari111/money-transfer-study/application/user"
+	userApp "github.com/inari111/money-transfer-study/application/user"
 )
 
 func NewUserCommand(
-	userApp user.Application,
+	userApp userApp.Application,
 ) pb.UserCommand {
 	return &userCommand{
 		userApp: userApp,
@@ -17,7 +19,7 @@ func NewUserCommand(
 }
 
 type userCommand struct {
-	userApp user.Application
+	userApp userApp.Application
 }
 
 func (c *userCommand) Register(ctx context.Context, req *pb.UserRegisterRequest) (*pb.UserRegisterResponse, error) {
@@ -29,5 +31,17 @@ func (c *userCommand) Register(ctx context.Context, req *pb.UserRegisterRequest)
 }
 
 func (c *userCommand) UpdateProfile(ctx context.Context, req *pb.UserUpdateProfileRequest) (*pb.UserUpdateProfileResponse, error) {
+	// TODO: 認証部分を作成したら、idTokenをdecodeしてuser.IDを取得し、使うようにする
+	err := c.userApp.UpdateProfile(
+		ctx,
+		&user.Profile{
+			ID:   "1",
+			Name: req.GetName(),
+			Age:  int(req.GetAge()),
+		})
+	if err != nil {
+		// TODO: twirp errorへ変換
+		return nil, err
+	}
 	return &pb.UserUpdateProfileResponse{}, nil
 }
