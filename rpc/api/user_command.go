@@ -3,41 +3,31 @@ package api
 import (
 	"context"
 
-	"github.com/inari111/money-transfer-study/domain"
+	pb "github.com/inari111/money-transfer-study/proto"
 
-	"github.com/inari111/money-transfer-study/domain/user"
-	"github.com/inari111/money-transfer-study/proto"
+	"github.com/inari111/money-transfer-study/application/user"
 )
 
 func NewUserCommand(
-	userRepo user.Repository,
-	now domain.CurrentTimeFunc,
+	userApp user.Application,
 ) pb.UserCommand {
 	return &userCommand{
-		userRepo: userRepo,
-		now:      now,
+		userApp: userApp,
 	}
 }
 
 type userCommand struct {
-	userRepo user.Repository
-	now      domain.CurrentTimeFunc
+	userApp user.Application
 }
 
 func (c *userCommand) Register(ctx context.Context, req *pb.UserRegisterRequest) (*pb.UserRegisterResponse, error) {
-	u := &user.User{
-		ID:        "",
-		CreatedAt: c.now(),
-		UpdatedAt: c.now(),
-	}
-	if err := c.userRepo.Put(ctx, u); err != nil {
-		// TODO: twirp errへの変換
+	if err := c.userApp.Register(ctx); err != nil {
+		// TODO: twirp errorへ変換
 		return nil, err
 	}
 	return &pb.UserRegisterResponse{}, nil
 }
 
-// TODO
-func (*userCommand) UpdateProfile(context.Context, *pb.UserUpdateProfileRequest) (*pb.UserUpdateProfileResponse, error) {
-	panic("implement me")
+func (c *userCommand) UpdateProfile(ctx context.Context, req *pb.UserUpdateProfileRequest) (*pb.UserUpdateProfileResponse, error) {
+	return &pb.UserUpdateProfileResponse{}, nil
 }
