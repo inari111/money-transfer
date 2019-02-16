@@ -5,6 +5,8 @@ package di
 import (
 	"net/http"
 
+	userApp "github.com/inari111/money-transfer-study/application/user"
+
 	"github.com/inari111/money-transfer-study/domain"
 
 	"github.com/inari111/money-transfer-study/infra/persistence/mysql"
@@ -23,9 +25,12 @@ func InitializeAPIHandler() http.Handler {
 		mysql.NewDbMap,
 
 		repository.NewUserRepository,
+		repository.NewUserProfileRepository,
 		repository.NewTransferRepository,
 
 		domain.NewCurrentTimeFunc,
+
+		userApp.NewApplication,
 
 		api.NewMoneyTransferCommand,
 		api.NewUserCommand,

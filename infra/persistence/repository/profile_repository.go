@@ -6,16 +6,16 @@ import (
 	"github.com/inari111/money-transfer-study/domain/user"
 )
 
-func NewProfileRepository() user.ProfileRepository {
-	return &profileRepository{}
+func NewUserProfileRepository() user.ProfileRepository {
+	return &userProfileRepository{}
 }
 
-type profileRepository struct{}
+type userProfileRepository struct{}
 
-func (*profileRepository) Get(ctx context.Context, id user.ID) (*user.Profile, error) {
+func (*userProfileRepository) Get(ctx context.Context, id user.ID) (*user.Profile, error) {
 	panic("implement me")
 }
 
-func (*profileRepository) Put(ctx context.Context, profile *user.Profile) error {
+func (*userProfileRepository) Put(ctx context.Context, profile *user.Profile) error {
 	panic("implement me")
 }

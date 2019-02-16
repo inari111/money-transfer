@@ -6,6 +6,7 @@
 package di
 
 import (
+	"github.com/inari111/money-transfer-study/application/user"
 	"github.com/inari111/money-transfer-study/domain"
 	"github.com/inari111/money-transfer-study/handler"
 	"github.com/inari111/money-transfer-study/infra/persistence/mysql"
@@ -23,8 +24,10 @@ func InitializeAPIHandler() http.Handler {
 	moneyQuery := rpc.NewMoneyQuery()
 	dbMap := mysql.NewDbMap()
 	userRepository := repository.NewUserRepository(dbMap)
+	profileRepository := repository.NewUserProfileRepository()
 	currentTimeFunc := domain.NewCurrentTimeFunc()
-	userCommand := api.NewUserCommand(userRepository, currentTimeFunc)
+	application := user.NewApplication(userRepository, profileRepository, currentTimeFunc)
+	userCommand := api.NewUserCommand(application)
 	userQuery := rpc.NewUserQuery()
 	moneyCommand := api.NewMoneyCommand()
 	httpHandler := handler.NewHandler(moneyTransferCommand, moneyQuery, userCommand, userQuery, moneyCommand)
