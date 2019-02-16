@@ -15,7 +15,6 @@ type Application interface {
 
 	UpdateProfile(
 		ctx context.Context,
-		user *user.User,
 		profile *user.Profile,
 	) error
 }
@@ -47,10 +46,9 @@ func (a *userApp) Register(ctx context.Context) error {
 	return a.userRepo.Put(ctx, u)
 }
 
-func (*userApp) UpdateProfile(
+func (a *userApp) UpdateProfile(
 	ctx context.Context,
-	user *user.User,
 	profile *user.Profile,
 ) error {
-	panic("implement me")
+	return a.profileRepo.Put(ctx, profile)
 }

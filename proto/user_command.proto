@@ -21,6 +21,8 @@ message UserRegisterResponse {
 
 message UserUpdateProfileRequest {
     string name = 1;
+
+    uint32 age = 2;
 }
 
 message UserUpdateProfileResponse {
