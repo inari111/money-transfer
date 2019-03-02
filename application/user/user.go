@@ -3,9 +3,9 @@ package user
 import (
 	"context"
 
-	"github.com/inari111/money-transfer-study/domain"
+	"github.com/inari111/money-transfer/domain"
 
-	"github.com/inari111/money-transfer-study/domain/user"
+	"github.com/inari111/money-transfer/domain/user"
 )
 
 type Application interface {

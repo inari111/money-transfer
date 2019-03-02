@@ -3,7 +3,7 @@ package transfer
 import (
 	"time"
 
-	"github.com/inari111/money-transfer-study/domain/user"
+	"github.com/inari111/money-transfer/domain/user"
 )
 
 type ID string

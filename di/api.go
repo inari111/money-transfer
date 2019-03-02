@@ -5,19 +5,19 @@ package di
 import (
 	"net/http"
 
-	userApp "github.com/inari111/money-transfer-study/application/user"
+	userApp "github.com/inari111/money-transfer/application/user"
 
-	"github.com/inari111/money-transfer-study/domain"
+	"github.com/inari111/money-transfer/domain"
 
-	"github.com/inari111/money-transfer-study/infra/persistence/mysql"
+	"github.com/inari111/money-transfer/infra/persistence/mysql"
 
-	"github.com/inari111/money-transfer-study/handler"
+	"github.com/inari111/money-transfer/handler"
 
-	"github.com/inari111/money-transfer-study/infra/persistence/repository"
-	infra_rpc "github.com/inari111/money-transfer-study/infra/rpc"
+	"github.com/inari111/money-transfer/infra/persistence/repository"
+	infra_rpc "github.com/inari111/money-transfer/infra/rpc"
 
 	"github.com/google/wire"
-	"github.com/inari111/money-transfer-study/rpc/api"
+	"github.com/inari111/money-transfer/rpc/api"
 )
 
 func InitializeAPIHandler() http.Handler {

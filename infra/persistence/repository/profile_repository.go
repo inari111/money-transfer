@@ -3,12 +3,12 @@ package repository
 import (
 	"context"
 
-	"github.com/inari111/money-transfer-study/domain"
+	"github.com/inari111/money-transfer/domain"
 
 	"github.com/go-gorp/gorp"
-	"github.com/inari111/money-transfer-study/infra/persistence/mysql"
+	"github.com/inari111/money-transfer/infra/persistence/mysql"
 
-	"github.com/inari111/money-transfer-study/domain/user"
+	"github.com/inari111/money-transfer/domain/user"
 )
 
 func NewUserProfileRepository(dbmap *gorp.DbMap, now domain.CurrentTimeFunc) user.ProfileRepository {

@@ -3,7 +3,7 @@ package rpc
 import (
 	"context"
 
-	"github.com/inari111/money-transfer-study/proto"
+	"github.com/inari111/money-transfer/proto"
 )
 
 func NewMoneyQuery() pb.MoneyQuery {
