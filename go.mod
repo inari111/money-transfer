@@ -1,4 +1,4 @@
-module github.com/inari111/money-transfer-study
+module github.com/inari111/money-transfer
 
 require (
 	github.com/go-gorp/gorp v2.0.0+incompatible

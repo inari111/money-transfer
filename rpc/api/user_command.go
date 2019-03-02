@@ -3,11 +3,11 @@ package api
 import (
 	"context"
 
-	"github.com/inari111/money-transfer-study/domain/user"
+	"github.com/inari111/money-transfer/domain/user"
 
-	pb "github.com/inari111/money-transfer-study/proto"
+	pb "github.com/inari111/money-transfer/proto"
 
-	userApp "github.com/inari111/money-transfer-study/application/user"
+	userApp "github.com/inari111/money-transfer/application/user"
 )
 
 func NewUserCommand(

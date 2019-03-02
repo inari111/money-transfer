@@ -3,8 +3,8 @@ package handler
 import (
 	"net/http"
 
-	"github.com/inari111/money-transfer-study/proto"
-	"github.com/inari111/money-transfer-study/rpc"
+	pb "github.com/inari111/money-transfer/proto"
+	"github.com/inari111/money-transfer/rpc"
 
 	"github.com/twitchtv/twirp"
 )

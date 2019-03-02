@@ -6,13 +6,13 @@
 package di
 
 import (
-	"github.com/inari111/money-transfer-study/application/user"
-	"github.com/inari111/money-transfer-study/domain"
-	"github.com/inari111/money-transfer-study/handler"
-	"github.com/inari111/money-transfer-study/infra/persistence/mysql"
-	"github.com/inari111/money-transfer-study/infra/persistence/repository"
-	"github.com/inari111/money-transfer-study/infra/rpc"
-	"github.com/inari111/money-transfer-study/rpc/api"
+	"github.com/inari111/money-transfer/application/user"
+	"github.com/inari111/money-transfer/domain"
+	"github.com/inari111/money-transfer/handler"
+	"github.com/inari111/money-transfer/infra/persistence/mysql"
+	"github.com/inari111/money-transfer/infra/persistence/repository"
+	"github.com/inari111/money-transfer/infra/rpc"
+	"github.com/inari111/money-transfer/rpc/api"
 	"net/http"
 )
 

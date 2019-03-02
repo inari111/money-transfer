@@ -3,9 +3,9 @@ package api
 import (
 	"context"
 
-	"github.com/inari111/money-transfer-study/domain/transfer"
+	"github.com/inari111/money-transfer/domain/transfer"
 
-	"github.com/inari111/money-transfer-study/proto"
+	"github.com/inari111/money-transfer/proto"
 )
 
 func NewMoneyTransferCommand(

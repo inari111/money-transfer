@@ -3,7 +3,7 @@ package repository
 import (
 	"context"
 
-	"github.com/inari111/money-transfer-study/domain/money"
+	"github.com/inari111/money-transfer/domain/money"
 )
 
 func NewMoneyRepository() money.Repository {

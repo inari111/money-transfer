@@ -3,7 +3,7 @@ package rpc
 import (
 	"context"
 
-	"github.com/inari111/money-transfer-study/proto"
+	"github.com/inari111/money-transfer/proto"
 )
 
 func NewUserQuery() pb.UserQuery {
@@ -16,7 +16,7 @@ type userQuery struct{}
 func (*userQuery) Get(context.Context, *pb.UserGetRequest) (*pb.UserGetResponse, error) {
 	return &pb.UserGetResponse{
 		User: &pb.User{
-			Id:          "",
+			Id:          "11111111111111111111111",
 			UserProfile: nil,
 			CreatedAt:   nil,
 			UpdatedAt:   nil,
