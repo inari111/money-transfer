@@ -1,0 +1,22 @@
+version: '3'
+services:
+  db:
+    image: mysql:5.7.25
+    ports:
+      - "3306:3306"
+    env_file:
+      - ../.env_local
+    volumes:
+      - ./mysql:/docker-entrypoint-initdb.d
+  app:
+    build: .
+    volumes:
+      - ../:/go/src/github.com/inari111/money-transfer
+    working_dir: /go/src/github.com/inari111/money-transfer
+    env_file:
+      - ../.env_local
+    command: make serve
+    ports:
+      - "8080:8080"
+    links:
+      - db
