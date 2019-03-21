@@ -26,8 +26,6 @@ func (*userRepository) Get(ctx context.Context, id user.ID) (*user.User, error) 
 }
 
 func (r *userRepository) Put(ctx context.Context, user *user.User) error {
-	defer r.dbmap.Db.Close()
-
 	u := &mysql.User{
 		CreatedAt: user.CreatedAt,
 		UpdatedAt: user.UpdatedAt,
