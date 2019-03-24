@@ -15,7 +15,7 @@ services:
     working_dir: /go/src/github.com/inari111/money-transfer
     env_file:
       - ../.env_local
-    command: make serve
+    command: make dev-serve
     ports:
       - "8080:8080"
     links:

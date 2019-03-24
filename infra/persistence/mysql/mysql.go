@@ -14,12 +14,11 @@ import (
 func NewDbMap() *gorp.DbMap {
 	u := os.Getenv("MYSQL_USER")
 	p := os.Getenv("MYSQL_PASSWORD")
-	host := "db"
-	port := 3306
+	host := os.Getenv("MYSQL_HOST")
+	port := os.Getenv("MYSQL_PORT")
 	if u == "" || p == "" {
 		panic(errors.New("user or password is empty"))
 	}
-	// TODO: ホスト名なども環境変数で制御する
 	source := fmt.Sprintf("%s:%s@tcp(%s:%v)/money_transfer?parseTime=true", u, p, host, port)
 	db, err := sql.Open("mysql", source)
 	if err != nil {
