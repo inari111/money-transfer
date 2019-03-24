@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS money_transfer CHARACTER SET utf8mb4;
+
 use money_transfer;
 
 CREATE TABLE `user` (
