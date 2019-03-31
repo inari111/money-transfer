@@ -1,4 +1,4 @@
-.PHONY: gen-proto di dev-serve clean-proto test export-local-env export-prod-env
+.PHONY: gen-proto di dev-serve prod-serve clean-proto test export-local-env export-prod-env
 
 ROOT := $(realpath .)
 
@@ -10,6 +10,9 @@ di:
 	go generate di/wire_gen.go
 
 dev-serve: export-local-env
+	go run main.go
+
+prod-serve: export-prod-env
 	go run main.go
 
 clean-proto:
