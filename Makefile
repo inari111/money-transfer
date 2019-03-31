@@ -1,4 +1,4 @@
-.PHONY: gen-proto di serve clean-proto test export-local-env
+.PHONY: gen-proto di dev-serve prod-serve clean-proto test export-local-env export-prod-env
 
 ROOT := $(realpath .)
 
@@ -12,6 +12,9 @@ di:
 dev-serve: export-local-env
 	go run main.go
 
+prod-serve: export-prod-env
+	go run main.go
+
 clean-proto:
 	rm -rf proto/*.{pb,twirp}.go
 
@@ -21,6 +24,12 @@ test:
 
 export-local-env:
 	$(shell ln -fsn .env_local .env)
+	cd _scripts && go build -o export_env export_env.go && cd ..
+	$(ROOT)/_scripts/export_env
+	rm $(ROOT)/_scripts/export_env
+
+export-prod-env:
+	$(shell ln -fsn .env_prod .env)
 	cd _scripts && go build -o export_env export_env.go && cd ..
 	$(ROOT)/_scripts/export_env
 	rm $(ROOT)/_scripts/export_env
