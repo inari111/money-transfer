@@ -3,6 +3,8 @@ package api
 import (
 	"context"
 
+	"github.com/inari111/money-transfer/rpc"
+
 	"github.com/inari111/money-transfer/domain/user"
 
 	pb "github.com/inari111/money-transfer/proto"
@@ -24,8 +26,7 @@ type userCommand struct {
 
 func (c *userCommand) Register(ctx context.Context, req *pb.UserRegisterRequest) (*pb.UserRegisterResponse, error) {
 	if err := c.userApp.Register(ctx); err != nil {
-		// TODO: twirp errorへ変換
-		return nil, err
+		return nil, rpc.TwirpErrFrom(err)
 	}
 	return &pb.UserRegisterResponse{}, nil
 }
@@ -40,8 +41,7 @@ func (c *userCommand) UpdateProfile(ctx context.Context, req *pb.UserUpdateProfi
 			Age:  int(req.GetAge()),
 		})
 	if err != nil {
-		// TODO: twirp errorへ変換
-		return nil, err
+		return nil, rpc.TwirpErrFrom(err)
 	}
 	return &pb.UserUpdateProfileResponse{}, nil
 }
