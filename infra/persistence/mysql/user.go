@@ -25,3 +25,20 @@ func (u *User) WithProfile(profile *user.Profile, now time.Time) *User {
 
 	return &user
 }
+
+func (u *User) ToDomain() *user.User {
+	return &user.User{
+		ID:        user.ID(u.ID),
+		Profile:   u.ToDomainProfile(),
+		CreatedAt: u.CreatedAt,
+		UpdatedAt: u.UpdatedAt,
+	}
+}
+
+func (u *User) ToDomainProfile() *user.Profile {
+	return &user.Profile{
+		ID:   user.ID(u.ID),
+		Name: u.Name,
+		Age:  u.Age,
+	}
+}
