@@ -12,7 +12,7 @@ func (id ID) String() string {
 
 type User struct {
 	ID ID
-	Profile
+	*Profile
 	CreatedAt time.Time
 	UpdatedAt time.Time
 }

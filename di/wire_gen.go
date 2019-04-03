@@ -6,6 +6,7 @@
 package di
 
 import (
+	"github.com/inari111/money-transfer/application/money"
 	"github.com/inari111/money-transfer/application/user"
 	"github.com/inari111/money-transfer/domain"
 	"github.com/inari111/money-transfer/handler"
@@ -29,7 +30,9 @@ func InitializeAPIHandler() http.Handler {
 	application := user.NewApplication(userRepository, profileRepository, currentTimeFunc)
 	userCommand := api.NewUserCommand(application)
 	userQuery := rpc.NewUserQuery()
-	moneyCommand := api.NewMoneyCommand()
+	moneyRepository := repository.NewMoneyRepository(dbMap)
+	moneyApplication := money.NewApplication(moneyRepository, currentTimeFunc)
+	moneyCommand := api.NewMoneyCommand(moneyApplication, application)
 	httpHandler := handler.NewHandler(moneyTransferCommand, moneyQuery, userCommand, userQuery, moneyCommand)
 	return httpHandler
 }

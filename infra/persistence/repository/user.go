@@ -21,8 +21,13 @@ type userRepository struct {
 	dbmap *gorp.DbMap
 }
 
-func (*userRepository) Get(ctx context.Context, id user.ID) (*user.User, error) {
-	panic("implement me")
+func (r *userRepository) Get(ctx context.Context, id user.ID) (*user.User, error) {
+	var u mysql.User
+	err := r.dbmap.SelectOne(&u, "select * from user where id=?", id.String())
+	if err != nil {
+		return nil, mysql.ToDomainError(err)
+	}
+	return u.ToDomain(), nil
 }
 
 func (r *userRepository) Put(ctx context.Context, user *user.User) error {

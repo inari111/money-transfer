@@ -5,6 +5,8 @@ package di
 import (
 	"net/http"
 
+	moneyApp "github.com/inari111/money-transfer/application/money"
+
 	userApp "github.com/inari111/money-transfer/application/user"
 
 	"github.com/inari111/money-transfer/domain"
@@ -27,10 +29,12 @@ func InitializeAPIHandler() http.Handler {
 		repository.NewUserRepository,
 		repository.NewUserProfileRepository,
 		repository.NewTransferRepository,
+		repository.NewMoneyRepository,
 
 		domain.NewCurrentTimeFunc,
 
 		userApp.NewApplication,
+		moneyApp.NewApplication,
 
 		api.NewMoneyTransferCommand,
 		api.NewUserCommand,
