@@ -23,7 +23,7 @@ type userRepository struct {
 
 func (r *userRepository) Get(ctx context.Context, id user.ID) (*user.User, error) {
 	var u mysql.User
-	err := r.dbmap.SelectOne(&u, "select * from user where id=?", id.String())
+	err := r.dbmap.SelectOne(&u, "select * from user where id=?", id.Int64())
 	if err != nil {
 		return nil, mysql.ToDomainError(err)
 	}

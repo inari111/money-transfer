@@ -27,7 +27,7 @@ func (*moneyRepository) Get(ctx context.Context, id money.ID) (*money.Money, err
 
 func (r *moneyRepository) Put(ctx context.Context, money *money.Money) error {
 	m := &mysql.Money{
-		UserID:    money.UserID.String(),
+		UserID:    money.UserID.Int64(),
 		Amount:    int64(money.Amount),
 		UpdatedAt: money.UpdatedAt,
 	}

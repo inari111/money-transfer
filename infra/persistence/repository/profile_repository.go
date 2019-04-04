@@ -35,7 +35,7 @@ func (r *userProfileRepository) Put(ctx context.Context, profile *user.Profile) 
 	}
 
 	var u mysql.User
-	err = tx.SelectOne(&u, "select * from user where id=?", profile.ID.String())
+	err = tx.SelectOne(&u, "select * from user where id=?", profile.ID)
 	if err != nil {
 		return err
 	}

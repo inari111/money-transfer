@@ -4,10 +4,10 @@ import (
 	"time"
 )
 
-type ID string
+type ID int64
 
-func (id ID) String() string {
-	return string(id)
+func (id ID) Int64() int64 {
+	return int64(id)
 }
 
 type User struct {
