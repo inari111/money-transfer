@@ -6,7 +6,7 @@ option go_package = "pb";
 import "google/protobuf/timestamp.proto";
 
 message User {
-    string id = 1;
+    uint64 id = 1;
 
     Profile user_profile = 2;
 

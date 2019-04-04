@@ -36,7 +36,7 @@ func (c *userCommand) UpdateProfile(ctx context.Context, req *pb.UserUpdateProfi
 	err := c.userApp.UpdateProfile(
 		ctx,
 		&user.Profile{
-			ID:   "1",
+			ID:   1,
 			Name: req.GetName(),
 			Age:  int(req.GetAge()),
 		})

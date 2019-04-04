@@ -10,7 +10,7 @@ service MoneyTransferCommand {
 
 message MoneyTransferSendRequest {
     // ユーザーID
-    string user_id = 1;
+    uint64 user_id = 1;
 
     // 送金額
     uint64 amount = 2;

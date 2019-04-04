@@ -11,6 +11,8 @@ import (
 )
 
 type Application interface {
+	Get(ctx context.Context, userID user.ID) (*user.User, error)
+
 	Exist(
 		ctx context.Context,
 		userID user.ID,
@@ -44,6 +46,10 @@ type userApp struct {
 	now         domain.CurrentTimeFunc
 }
 
+func (a *userApp) Get(ctx context.Context, userID user.ID) (*user.User, error) {
+	return a.userRepo.Get(ctx, userID)
+}
+
 func (a *userApp) Exist(
 	ctx context.Context,
 	userID user.ID,
@@ -61,7 +67,6 @@ func (a *userApp) Exist(
 
 func (a *userApp) Register(ctx context.Context) error {
 	u := &user.User{
-		ID:        "",
 		CreatedAt: a.now(),
 		UpdatedAt: a.now(),
 	}

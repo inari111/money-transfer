@@ -29,7 +29,7 @@ func InitializeAPIHandler() http.Handler {
 	profileRepository := repository.NewUserProfileRepository(dbMap, currentTimeFunc)
 	application := user.NewApplication(userRepository, profileRepository, currentTimeFunc)
 	userCommand := api.NewUserCommand(application)
-	userQuery := rpc.NewUserQuery()
+	userQuery := rpc.NewUserQuery(application)
 	moneyRepository := repository.NewMoneyRepository(dbMap)
 	moneyApplication := money.NewApplication(moneyRepository, currentTimeFunc)
 	moneyCommand := api.NewMoneyCommand(moneyApplication, application)
