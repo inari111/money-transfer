@@ -24,12 +24,8 @@ test:
 
 export-local-env:
 	$(shell ln -fsn .env_local .env)
-	cd _scripts && go build -o export_env export_env.go && cd ..
-	$(ROOT)/_scripts/export_env
-	rm $(ROOT)/_scripts/export_env
+	sh $(ROOT)/_scripts/export_env.sh
 
 export-prod-env:
 	$(shell ln -fsn .env_prod .env)
-	cd _scripts && go build -o export_env export_env.go && cd ..
-	$(ROOT)/_scripts/export_env
-	rm $(ROOT)/_scripts/export_env
+	sh $(ROOT)/_scripts/export_env.sh
